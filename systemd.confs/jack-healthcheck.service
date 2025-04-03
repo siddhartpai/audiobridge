@@ -1,0 +1,10 @@
+[Unit]
+Description=Monitor JACK and restart if unresponsive
+After=jackd.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/dietpi/audiobridge/jack_healthcheck.sh
+
+[Install]
+WantedBy=default.target

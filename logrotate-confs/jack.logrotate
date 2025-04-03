@@ -1,0 +1,9 @@
+/home/dietpi/audiobridge/logs/monitor.log {
+    daily               # Rotate logs daily
+    rotate 7            # Keep last 7 logs
+    compress            # Compress old logs
+    missingok           # Ignore errors if log file is missing
+    notifempty          # Skip rotation if log is empty
+    create 644 dietpi dietpi # Set permissions for new logs
+}
+

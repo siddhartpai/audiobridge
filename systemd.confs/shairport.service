@@ -1,0 +1,12 @@
+[Unit]
+Description=Shairport Service[Airplay]
+After=jackd.service
+Requires=jackd.service
+BindsTo=jackd.service
+PartOf=jackd.service
+[Service]
+ExecStart=/home/dietpi/audiobridge/start_shairport_sync.sh
+Restart=always
+
+[Install]
+WantedBy=default.target
