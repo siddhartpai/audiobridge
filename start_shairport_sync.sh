@@ -6,7 +6,7 @@ jack_connect system:capture_1 system:playback_1
 jack_connect system:capture_1 system:playback_2
 
 # Start AirPlay
-nice -n 10 /usr/local/bin/shairport-sync -o jack
+/usr/local/bin/shairport-sync -o jack
 
 #sleep 10
 #jack_lsp

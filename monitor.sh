@@ -3,7 +3,7 @@
 exec >> /home/dietpi/audiobridge/logs/monitor.log 2>&1
 
 # Threshold for detecting audio (adjust as needed)
-THRESHOLD=-30 # in jack meter dB 
+THRESHOLD=-35 # in jack meter dB 
 
 # Time without audio before turning off (in seconds)
 TIMEOUT=$((10 * 60))
