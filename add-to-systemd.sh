@@ -23,9 +23,19 @@ systemctl --user enable post_shairport.service
 systemctl --user enable amp_control.service
 systemctl --user enable --now jack-healthcheck.timer
 
-# Start services
-systemctl --user start jackd.service
-systemctl --user start shairport.service
-systemctl --user start post_shairport.service
-systemctl --user start amp_control.service
+# Start services (non-blocking)
+echo "Starting services..."
+systemctl --user start jackd.service --no-block
+sleep 2
+systemctl --user start shairport.service --no-block
+sleep 2
+systemctl --user start post_shairport.service --no-block
+sleep 2
+systemctl --user start amp_control.service --no-block
+
+echo "Installation complete!"
+echo "Check service status with: systemctl --user status <service-name>"
+echo "View logs with: journalctl --user -u <service-name> -f"
+
+exit 0
 
