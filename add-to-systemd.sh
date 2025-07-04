@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Configuration
-BASE_DIR="$(dirname "$0")"
+BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
 SERVICE_DIR="~/.config/systemd/user"
 
 # Ensure systemd user directory exists
 mkdir -p ~/.config/systemd/user
 
-# Update service files with current directory path
+# Update service files with current directory path (absolute)
 for service in "$BASE_DIR"/systemd.confs/*.service; do
     sed "s|/home/dietpi/audiobridge|$BASE_DIR|g" "$service" > ~/.config/systemd/user/$(basename "$service")
 done
