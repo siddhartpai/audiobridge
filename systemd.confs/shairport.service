@@ -1,7 +1,7 @@
 [Unit]
 Description=Shairport Service[Airplay]
 After=jackd.service
-Requires=jackd.service
+Wants=jackd.service
 BindsTo=jackd.service
 PartOf=jackd.service
 [Service]

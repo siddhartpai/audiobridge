@@ -1,7 +1,7 @@
 [Unit]
 Description=Amp Control
 After=post_shairport.service
-Requires=post_shairport.service
+Wants=post_shairport.service
 PartOf=post_shairport.service
 
 [Service]
