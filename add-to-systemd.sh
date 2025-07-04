@@ -23,6 +23,13 @@ systemctl --user enable post_shairport.service
 systemctl --user enable amp_control.service
 systemctl --user enable --now jack-healthcheck.timer
 
+# Stop any running services first (clean slate)
+echo "Stopping existing services..."
+systemctl --user stop amp_control.service 2>/dev/null || true
+systemctl --user stop post_shairport.service 2>/dev/null || true
+systemctl --user stop shairport.service 2>/dev/null || true
+systemctl --user stop jackd.service 2>/dev/null || true
+
 # Start services (non-blocking)
 echo "Starting services..."
 systemctl --user start jackd.service --no-block
