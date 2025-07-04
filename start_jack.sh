@@ -1,5 +1,23 @@
 #!/bin/bash
 
+# Configuration
+BASE_DIR="${BASE_DIR:-$(dirname "$0")}"
+LOG_DIR="${LOG_DIR:-$BASE_DIR/logs}"
+
+# Ensure log directory exists
+mkdir -p "$LOG_DIR"
+
+# Check dependencies
+if ! command -v jackd &>/dev/null; then
+    echo "Error: jackd not found" >&2
+    exit 1
+fi
+
+if ! command -v amixer &>/dev/null; then
+    echo "Error: amixer not found" >&2
+    exit 1
+fi
+
 sleep 10
 ulimit -r 95  # Ensure high priority
 ulimit -l unlimited  # Ensure memory locking

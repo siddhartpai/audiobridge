@@ -1,7 +1,7 @@
 [Unit]
 Description=Connect Shairport To Jack[Airplay]
 After=shairport.service
-Requires=shairport.service
+Wants=shairport.service
 PartOf=shairport.service
 
 [Service]
