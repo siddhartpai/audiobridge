@@ -7,6 +7,10 @@ SERVICE_DIR="~/.config/systemd/user"
 # Ensure systemd user directory exists
 mkdir -p ~/.config/systemd/user
 
+# Copy shairport-sync configuration to /etc
+echo "Copying shairport-sync configuration..."
+sudo cp "$BASE_DIR/etc/shairport-sync.conf" /etc/shairport-sync.conf
+
 # Update service files with current directory path (absolute)
 for service in "$BASE_DIR"/systemd.confs/*.service; do
     sed "s|/home/dietpi/audiobridge|$BASE_DIR|g" "$service" > ~/.config/systemd/user/$(basename "$service")
