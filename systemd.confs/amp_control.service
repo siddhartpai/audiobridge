@@ -9,9 +9,11 @@ Type=simple
 ExecStart=/home/dietpi/audiobridge/monitor.sh
 Restart=always
 RestartSec=3
+User=dietpi
+Group=audio
+WorkingDirectory=/home/dietpi/audiobridge
 StandardOutput=append:/home/dietpi/audiobridge/logs/monitor.log
 StandardError=append:/home/dietpi/audiobridge/logs/monitor.log
 
-
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

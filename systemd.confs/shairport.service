@@ -1,12 +1,23 @@
-[Unit]
-Description=Shairport Service[Airplay]
-After=jackd.service
-Wants=jackd.service
-BindsTo=jackd.service
-PartOf=jackd.service
-[Service]
-ExecStart=/home/dietpi/audiobridge/start_shairport_sync.sh
-Restart=always
+# This service is now replaced by the built-in shairport-sync.service
+# Use: sudo systemctl enable shairport-sync.service
+# Configuration is handled via /etc/shairport-sync.conf
 
-[Install]
-WantedBy=default.target
+# [Unit]
+# Description=Shairport Service[Airplay] - DEPRECATED
+# After=jackd.service
+# Wants=jackd.service
+# BindsTo=jackd.service
+# PartOf=jackd.service
+# [Service]
+# Type=simple
+# ExecStart=/home/dietpi/audiobridge/start_shairport_sync.sh
+# Restart=always
+# RestartSec=5
+# User=dietpi
+# Group=audio
+# WorkingDirectory=/home/dietpi/audiobridge
+# StandardOutput=journal
+# StandardError=journal
+
+# [Install]
+# WantedBy=multi-user.target

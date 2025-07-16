@@ -330,4 +330,5 @@ This project is open source. Feel free to modify and distribute according to you
 
 ---
 
+Shairport configure command : ./configure --sysconfdir=/etc --with-jack     --with-soxr --with-avahi --with-ssl=openssl --with-systemd --with-airplay-2 --with-apple-alac --with-convolution
 **Note**: This system is designed for home/personal use. For production environments, consider additional security measures and monitoring.
