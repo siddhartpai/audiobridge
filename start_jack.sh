@@ -8,22 +8,20 @@ LOG_DIR="${LOG_DIR:-$BASE_DIR/logs}"
 mkdir -p "$LOG_DIR"
 
 # Check dependencies
-if ! command -v jackd &>/dev/null; then
-    echo "Error: jackd not found" >&2
-    exit 1
-fi
+for cmd in jackd amixer; do
+    command -v "$cmd" >/dev/null || { echo "Error: $cmd not found" >&2; exit 1; }
+done
 
-if ! command -v amixer &>/dev/null; then
-    echo "Error: amixer not found" >&2
-    exit 1
-fi
+# Wait for hardware to settle
+sleep 5
 
-sleep 10
-ulimit -r 95  # Ensure high priority
-ulimit -l unlimited  # Ensure memory locking
+# Set resource limits
+ulimit -r unlimited   # Realtime priority
+ulimit -l unlimited   # Locked memory
 
-amixer -c 0 cset numid=8 0 # Unnecessary Capture Volume
-amixer -c 0 cset numid=9 0 # Gain
+# Mixer configuration
+amixer -c 0 cset numid=8 0  # Disable capture
+amixer -c 0 cset numid=9 0  # Set gain to 0
 
 # Start JACK with real-time priority
-jackd -P95 -d alsa -d hw:0,0 -p 1024 -n 2 -r 44100
+exec jackd -R -P95 -d alsa -d hw:0,0 -p 1024 -n 2 -r 44100
