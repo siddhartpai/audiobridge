@@ -13,7 +13,7 @@ for cmd in jackd amixer; do
 done
 
 # Wait for hardware to settle
-sleep 5
+sleep 2
 
 # Set resource limits
 ulimit -r unlimited   # Realtime priority
