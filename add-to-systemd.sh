@@ -10,6 +10,7 @@ mkdir -p ~/.config/systemd/user
 # Copy shairport-sync configuration to /etc
 echo "Copying shairport-sync configuration..."
 sudo cp "$BASE_DIR/etc/shairport-sync.conf" /etc/shairport-sync.conf
+sudo cp "$BASE_DIR/etc/convolution_filter.wav" /etc/convolution_filter.wav
 
 # Update service files with current directory path (absolute)
 for service in "$BASE_DIR"/systemd.confs/*.service; do
