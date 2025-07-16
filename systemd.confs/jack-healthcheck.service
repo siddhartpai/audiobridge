@@ -5,6 +5,9 @@ After=jackd.service
 [Service]
 Type=oneshot
 ExecStart=/home/dietpi/audiobridge/jack_healthcheck.sh
+User=dietpi
+Group=audio
+WorkingDirectory=/home/dietpi/audiobridge
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

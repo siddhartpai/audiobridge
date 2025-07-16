@@ -1,0 +1,17 @@
+[Unit]
+Description=Post-JACK Audio Connections
+After=jackd.service
+Requires=jackd.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=dietpi
+Group=audio
+WorkingDirectory=/home/dietpi/audiobridge
+ExecStart=/home/dietpi/audiobridge/post_jack.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

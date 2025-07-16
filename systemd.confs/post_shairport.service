@@ -1,13 +1,16 @@
 [Unit]
 Description=Connect Shairport To Jack[Airplay]
-After=shairport.service
-Wants=shairport.service
-PartOf=shairport.service
+After=shairport-sync.service
+Wants=shairport-sync.service
+PartOf=shairport-sync.service
 
 [Service]
 Type=oneshot
 ExecStart=/home/dietpi/audiobridge/post_shairport_sync.sh
 RemainAfterExit=yes
+User=dietpi
+Group=audio
+WorkingDirectory=/home/dietpi/audiobridge
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

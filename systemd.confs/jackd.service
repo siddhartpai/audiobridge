@@ -4,10 +4,17 @@ Description=JACK Audio Daemon
 After=sound.target
 
 [Service]
+Type=simple
 ExecStart=/home/dietpi/audiobridge/start_jack.sh
 Restart=always
+RestartSec=5
+User=dietpi
+Group=audio
 Environment=DISPLAY=:0
 Environment=JACK_NO_AUDIO_RESERVATION=1
+WorkingDirectory=/home/dietpi/audiobridge
+StandardOutput=journal
+StandardError=journal
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

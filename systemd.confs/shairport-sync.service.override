@@ -1,0 +1,14 @@
+[Service]
+ExecStart=
+ExecStart=/usr/local/bin/shairport-sync --log-to-syslog -o jack
+User=dietpi
+Group=audio
+LimitRTPRIO=infinity
+LimitMEMLOCK=infinity
+LimitNICE=-20
+[Unit]
+Requires=
+Requires=jackd.service
+After=
+After=jackd.service
+
