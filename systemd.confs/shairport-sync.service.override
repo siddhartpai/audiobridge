@@ -1,0 +1,5 @@
+[Service]
+ExecStart=
+ExecStart=/usr/local/bin/shairport-sync -o jack --log-to-syslog
+User=dietpi
+Group=audio
